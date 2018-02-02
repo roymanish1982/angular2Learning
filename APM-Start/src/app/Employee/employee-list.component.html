@@ -1,0 +1,54 @@
+<div>
+    <div class='panel-heading'>
+        {{pageTitle}}
+    </div>
+    <a class='btn btn-default'(click)='addNew()' style='width:100px' >
+        <img style="
+        width: 20px;
+        height: 20px;" 
+        src='./assets/images/New.png' > Add New
+    </a>
+    
+  <div class='table-responsive'>
+    <table class='table'
+        *ngIf='EmployeeList && EmployeeList.length'>
+        <thead>
+            <tr>
+                <th>Employee Code</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Salary</th>
+                <th>Date Of Birth</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+        </thead>
+        <tbody>
+           <tr *ngFor='let employee of EmployeeList'>
+               <th>{{employee.employeeCode}}</th>
+                <th>{{employee.firstName}}</th>
+                <th>{{employee.lastName}}</th>
+                <th>{{employee.gender}}</th>
+                <th>{{employee.salary | currency:'USD':true:'1.2-4'}}</th>
+                <th>{{employee.dateOfBirth | date:'yyyy-MM-dd'}}</th>
+                <th>
+                        <a class='btn btn-default'(click)='editEmployee()' style='width:80px' >
+                                <img style="
+                                width: 20px;
+                                height: 20px;" 
+                                src='./assets/images/Edit.png' >
+                            </a>
+                </th>
+                <th>
+                        <a class='btn btn-default'(click)='deleteEmployee(employee.employeeCode,employee.employeeId)' style='width:80px' >
+                                <img style="
+                                width: 20px;
+                                height: 20px;" 
+                                src='./assets/images/Delete.png' >
+                            </a>
+                </th>
+           </tr>
+        </tbody>
+    </table>
+</div>
